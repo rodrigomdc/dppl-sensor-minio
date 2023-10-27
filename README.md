@@ -1,4 +1,4 @@
-# Estudo de pipeline de dados, Data Lake com o MinIO e processamento com o Apache Spark 
+# Estudo de pipeline de dados com MinIO Object Storage e processamento de dados IoT no Apache Spark
 
 ###  Apresentação
 
@@ -12,6 +12,12 @@ Um pipeline básico de dados foi criado, considerando que:
 
 Destaca-se que este projeto considerou o processamento dos dados em batch, mesmo tendo o conhecimento que a natureza dos dados IoT direcione ao processamento em streaming. Logo, estudos futuros pretendem realizar a aplicação do mesmo cenário porém com processamento em streaming. 
 
+A figura abaixo representa a visão básica do ambiente criado.
+
+<p align="center">
+    <img src="img/cenario.png" height="500">
+</p>
+
 ### Etapas
 
 A construção do projeto e, por consequência, do pipeline proposto ocorreu em 4 etapas.
@@ -21,25 +27,20 @@ A construção do projeto e, por consequência, do pipeline proposto ocorreu em 
 3. Aquisição e Ingestão de dados da plataforma IoT
 4. Processamento dos dados
 
-A figura abaixo representa a visão geral do ambiente criado.
-
-******* FIGURA *******
-
-
-
 #### 1. Construção de uma infraestrutura local
 
 Visando o reforço nos conhecimentos de Sistema Operacional Linux, Redes de Computadores e Virtualização, buscou-se criar uma infraestrutura local com o uso de máquina virtual criada no VirtualBox. 
 
 Assim, uma máquina virtual foi provisionada como serviço de storage de objetos contendo a seguinte configuração:
 
-* S.O: Ubuntu Minimal 18.08 configurado como servidor básico
+* SO: Ubuntu Minimal 18.08 configurado como servidor básico
 * RAM: 2 GB
 * HD: 30 GB
 * interface de Rede: modo bridge
 
 Já a máquina hospedeira apresenta a seguinte configuração:
 
+* SO: Linux Mint v21.1
 * CPU: Core i7 8 núcleos
 * RAM: 20 GB
 * Python v3.10
