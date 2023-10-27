@@ -94,9 +94,15 @@ Os dados presentes no bucket Bronze são lidos e então passam por alguns ajuste
 * Criação de colunas referentes a ano, mês, dia e hora da coleta do dado pelo sensor
 * Alteração do mês em formato de número para o formato de caractere
 
-Em seguida, o Dataframe resultante é enviado ao bucket Silver em formato Parquet com agrupamento por ano e mês. 
+Em seguida, o Dataframe resultante é enviado ao bucket Silver em formato parquet com agrupamento por ano e mês. 
 
 Toda esta etapa está foi realizada no notebook **dt_datapipeline.ipynb** presente neste repositório. É importante destacar que ele também é executado localmente na máquina hospedeira via VSCode. 
+
+A figura abaixo representa a leitura do arquivo parquet presente no bucket Silver.
+
+<p align="left">
+    <img src="img/silver.png" height="350">
+</p>
 
 ### Conclusão
 
