@@ -103,7 +103,7 @@ Toda esta etapa foi realizada no notebook **dt_datapipeline.ipynb** presente nes
 A figura abaixo representa a leitura do arquivo parquet presente no bucket Silver.
 
 <p align="left">
-    <img src="img/silver.png" height="350">
+    <img src="img/df_silver.png" height="150">
 </p>
 
 ### Conclusão
