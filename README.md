@@ -36,7 +36,7 @@ Assim, uma máquina virtual foi provisionada como serviço de storage de objetos
 * SO: Ubuntu Minimal 18.08 configurado como servidor básico
 * RAM: 2 GB
 * HD: 30 GB
-* interface de Rede: modo bridge
+* Interface de Rede: modo bridge
 
 Já a máquina hospedeira apresenta a seguinte configuração:
 
