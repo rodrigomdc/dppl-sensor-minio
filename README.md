@@ -63,9 +63,11 @@ No MinIO, criou-se 3 buckets seguindo os conceitos da Arquitetura Medallion:
 
 Como fonte de dados, escolheu-se dados de natureza em tempo real obtidos de uma aplicação de IoT hospedada na plataforma ThingSpeak. Nela, as aplicações são definidas como canais (Channels) que podem ser privados ou públicos. 
 
-Escolheu-se o [Channel ID: 1052510](https://thingspeak.com/channels/1052510) por representar dados coletados de uma estação meteorológica particular instalada na cidade de Belém-PA. Entre os diversos dados gerados, escolheu-se, por simplicidade e sem nenhum outro critério específico, apenas o de **Umidade Relativa do Ar**. 
+Escolheu-se o [Channel ID: 1052510](https://thingspeak.com/channels/1052510) por representar dados coletados de uma estação meteorológica particular instalada na cidade de Belém-PA. É necessário realizar um cadastro simples na plataforma para poder acessar o URL de cada um dos dados dos sensores presentes no channel correspondente. Escolheu-se manipular dados referentes a:
 
-É necessário realizar um cadastro simples na plataforma para poder acessar o URL de cada um dos dados dos sensores presentes no channel correspondente. 
+* Umidade relativa do ar (%rH)
+* Temperatura do ambiente (Celsius)
+* Pressão Atmosférica (mBar)
 
 Em relação à ingestão dos dados, ela segue as seguintes sequências:
 
@@ -82,7 +84,7 @@ O diretório **dataingestion/** presente neste repositório possui um conjunto d
 * **main.py:** Programa principal, pois interage com as classes presentes no datasource.py e bucketmanipuling.py bem como recebe parâmetros de execução, além de garantir o agendamento de execução
 * **credentials.py:** Possui as credenciais de acesso aos serviços no MinIO. Elas são criadas dentro do próprio ambiente dele. 
 
-Os scripts foram criados em Python v3.10 e executados em um terminal na máquina hospedeira.
+Todos os scripts foram criados em lingugem Python v3.10 e executados em um terminal na máquina hospedeira.
 
 #### 4. Processamento dos dados
 
@@ -96,7 +98,7 @@ Os dados presentes no bucket Bronze são lidos e então passam por alguns ajuste
 
 Em seguida, o Dataframe resultante é enviado ao bucket Silver em formato parquet com agrupamento por ano e mês. 
 
-Toda esta etapa está foi realizada no notebook **dt_datapipeline.ipynb** presente neste repositório. É importante destacar que ele também é executado localmente na máquina hospedeira via VSCode. 
+Toda esta etapa foi realizada no notebook **dt_datapipeline.ipynb** presente neste repositório sendo executado localmente na máquina hospedeira via VSCode. 
 
 A figura abaixo representa a leitura do arquivo parquet presente no bucket Silver.
 
