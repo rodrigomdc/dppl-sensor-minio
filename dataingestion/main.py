@@ -15,7 +15,7 @@ def repeatTask():
 
 #Delete the last JSON file uploaded to the bucket, thus keeping the most current one
 def clearSrcDir():
-    rd_file = src_dir + os.listdir(src_dir)[0]  
+    rd_file = tmp_dir + os.listdir(tmp_dir)[0]  
     if os.path.exists(rd_file):
         os.remove(rd_file)
     else:
@@ -24,12 +24,12 @@ def clearSrcDir():
 def main():   
     
     #Delete the last JSON file present in the directory after uploading it to the bucket, thus keeping the most current one
-    src_data = DataSensor(type_sensor)
-    src_data.saveToFile(src_url, src_dir)    
+    src_data = DataSensor(src_url)
+    src_data.saveToFile(tmp_dir)    
     
     #Upload JSON file to bucket in Minio
     bucket = DataBucket(server_addr, api_port)
-    bucket.sendToBucket(src_dir, bucket_name, output_info)
+    bucket.sendToBucket(tmp_dir, bucket_name, output_info)
  
     clearSrcDir()
 
@@ -39,19 +39,17 @@ if __name__ == "__main__":
     parser.add_argument("srv_addr", default="127.0.0.1", help="Minio server IP Address")
     parser.add_argument("api_port", default="9000", help="Application port to Minio service")
     parser.add_argument("url", help="Url to ThingSpeak data source")
-    parser.add_argument("rw_dir", help="Destination to save the json file with collected data")
-    parser.add_argument("bucket", help="Bucket to store json file in Minio server")
-    parser.add_argument("schedule_time", default=60, type=int, help="Schedule the task to run at a specific time (seconds)")
-    parser.add_argument("-sT","--sensor", default="humidity", help="Type of sensor in ThingSpeak data source")    
+    parser.add_argument("raw_dir", help="Temporary directory to save the JSON file with collected data")
+    parser.add_argument("bucket", help="Bucket to store JSON file in Minio server")
+    parser.add_argument("schedule_time", default=60, type=int, help="Schedule the task to run the script at a specific time (seconds)")        
     parser.add_argument("-o","--output", action="store_true", help="Shows whether the file was sent to the bucket successfully")
     args = vars(parser.parse_args())
 
     server_addr = args["srv_addr"]
     api_port = args["api_port"]
     src_url = args["url"]
-    src_dir = args["rw_dir"]        
+    tmp_dir = args["raw_dir"]        
     bucket_name = args["bucket"]
-    type_sensor = args["sensor"]
     acquisition_time = args["schedule_time"]
     output_info = args["output"]
 

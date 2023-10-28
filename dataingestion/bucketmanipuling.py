@@ -9,6 +9,7 @@
 from minio import Minio
 import credentials
 import os 
+import sys
 
 class DataBucket:
 
@@ -54,22 +55,22 @@ class DataBucket:
         obj_name = os.listdir(source_dir)[0]
         file_name = source_dir + os.listdir(source_dir)[0]
         cli_bucket = self._createConnection()
-
         if not os.listdir(source_dir):
            print(f"No file to send in directory: {source_dir}!")   
         if not cli_bucket.bucket_exists(bucket_name):
             print(f"Bucket <{bucket_name}> not exist")
-
-        cli_bucket.fput_object(
-            bucket_name, 
-            obj_name,  
-            file_name, 
-            content_type = "application/json"
-        )
-
-        if status:   
-            print("File is successfully uploaded!")
-            print(f"Object: '{obj_name}'")
-            print(f"Bucket: '{bucket_name}/'")
-            print("\n")
-    
+        try:            
+            cli_bucket.fput_object(
+                bucket_name, 
+                obj_name,  
+                file_name, 
+                content_type = "application/json"
+            )
+            if status:   
+                print("File is successfully uploaded!")
+                print(f"Object: '{obj_name}'")
+                print(f"Bucket: '{bucket_name}/'")
+                print("\n")
+        except Exception as e:
+            print("Error: ", e)
+            sys.exit(0)
