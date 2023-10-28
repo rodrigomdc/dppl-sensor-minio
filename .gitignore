@@ -1,3 +1,6 @@
 #Directories to ingnore
+dataingestion/__pycache__/
 
-__pycache__/
+
+#Files to ignore
+.env
