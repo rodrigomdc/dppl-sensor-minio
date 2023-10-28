@@ -1,0 +1,3 @@
+#Directories to ingnore
+
+__pycache__/
