@@ -88,7 +88,7 @@ O diretório **dataingestion/** presente neste repositório possui um conjunto d
 Cada leitura gera um arquivo JSON que é armazenado no bucket Bronze. A figura abaixo apresenta uma amostra do conteúdo presente neste bucket. 
 
 <p align="left">
-    <img src="img/amostra_bucket.png" height="150">
+    <img src="img/amostra_bucket.png" height="200">
 </p>
 
 
