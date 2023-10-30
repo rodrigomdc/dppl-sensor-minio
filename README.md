@@ -44,6 +44,7 @@ Já a máquina hospedeira apresenta a seguinte configuração:
 * CPU: Core i7 8 núcleos
 * RAM: 20 GB
 * Python v3.10
+* Apache Spark v3.5.0
 
 #### 2. Implantação do serviço de storage local de objetos
 
@@ -84,7 +85,12 @@ O diretório **dataingestion/** presente neste repositório possui um conjunto d
 * **main.py:** Programa principal, pois interage com as classes presentes no datasource.py e bucketmanipuling.py bem como recebe parâmetros de execução, além de garantir o agendamento de execução
 * **credentials.py:** Possui as credenciais de acesso aos serviços no MinIO. Elas são criadas dentro do próprio ambiente dele. 
 
-Todos os scripts foram criados em lingugem Python v3.10 e executados em um terminal na máquina hospedeira.
+Cada leitura gera um arquivo JSON que é armazenado no bucket Bronze. A figura abaixo apresenta uma amostra do conteúdo presente neste bucket. 
+
+<p align="left">
+    <img src="img/amostra_bucket.png" height="150">
+</p>
+
 
 #### 4. Processamento dos dados
 
